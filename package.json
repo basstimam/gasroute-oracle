@@ -13,7 +13,8 @@
     "typecheck": "bunx tsc --noEmit",
     "manifest": "bun run scripts/generate-manifest.ts",
     "test": "bun test",
-    "pay": "bun run scripts/pay-and-call.ts"
+    "pay": "bun run scripts/pay-and-call.ts",
+    "build": "exit 0"
   },
   "dependencies": {
     "@lucid-dreams/agent-kit": "latest",
