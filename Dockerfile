@@ -1,23 +1,18 @@
 # Use official Bun image
-FROM oven/bun:1.1 as base
+FROM oven/bun:1.1
 
-# Create working directory
 WORKDIR /app
 
-# Copy dependency files first to leverage Docker cache
-COPY dreams/package.json dreams/bun.lock* ./
-
-# Install dependencies (will cache unless package.json/bun.lock changes)
+# Install dependencies
+COPY package.json bun.lock* ./
 RUN bun install
 
-# Copy the rest of the project
-COPY dreams/ .
+# Copy application code
+COPY . .
 
-# Generate the agent manifest ahead of time (optional but keeps container ready)
+# Generate manifest ahead of time
 RUN bun run manifest
 
-# Expose default port
 EXPOSE 8787
 
-# Start the agent
 CMD ["bun", "run", "start"]
