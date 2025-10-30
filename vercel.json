@@ -1,0 +1,8 @@
+{
+  "framework": "none",
+  "installCommand": "cd dreams && bun install",
+  "buildCommand": "cd dreams && bun run manifest",
+  "routes": [
+    { "src": "/(.*)", "dest": "dreams/api/index.ts" }
+  ]
+}
