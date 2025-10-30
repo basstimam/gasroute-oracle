@@ -1,0 +1,7 @@
+node_modules
+.env
+.env.local
+*.test.ts
+tests
+scripts
+README.md

@@ -8,7 +8,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "types": ["bun-types"],
-    "noEmit": true
+    "outDir": "./dist",
+    "declaration": true
   },
   "include": ["src", "api"]
 }
