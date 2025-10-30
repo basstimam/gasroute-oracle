@@ -1,0 +1,317 @@
+{
+  "name": "GasRoute Oracle",
+  "description": "Recommends the cheapest EVM chain and timing hints for contract calls across Ethereum, Base, Arbitrum, and BSC.",
+  "url": "http://localhost:8787/",
+  "version": "0.0.1",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extensions": [
+      {
+        "uri": "https://github.com/google-agentic-commerce/ap2/tree/v0.1",
+        "description": "Agent Payments Protocol (AP2)",
+        "required": true,
+        "params": {
+          "roles": [
+            "merchant"
+          ]
+        }
+      }
+    ]
+  },
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "recommendRoute",
+      "name": "recommendRoute",
+      "description": "Analyse gas costs across the provided chains and return the cheapest route with timing guidance.",
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "streaming": false,
+      "x_input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "chain_set": {
+            "description": "Candidate chains to evaluate.",
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "base",
+                "arbitrum",
+                "bsc"
+              ]
+            }
+          },
+          "calldata_size_bytes": {
+            "description": "Calldata size in bytes expected for the transaction.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "gas_units_est": {
+            "description": "Base gas estimate (without calldata) for the transaction.",
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "chain_set",
+          "calldata_size_bytes",
+          "gas_units_est"
+        ],
+        "additionalProperties": false
+      },
+      "x_output_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "chain": {
+            "type": "string",
+            "enum": [
+              "ethereum",
+              "base",
+              "arbitrum",
+              "bsc"
+            ]
+          },
+          "fee_native": {
+            "type": "number"
+          },
+          "fee_usd": {
+            "type": "number"
+          },
+          "busy_level": {
+            "type": "string",
+            "enum": [
+              "low",
+              "moderate",
+              "high"
+            ]
+          },
+          "tip_hint": {
+            "type": "string"
+          },
+          "evaluated_at": {
+            "type": "number"
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "chain": {
+                  "type": "string",
+                  "enum": [
+                    "ethereum",
+                    "base",
+                    "arbitrum",
+                    "bsc"
+                  ]
+                },
+                "fee_native": {
+                  "type": "number"
+                },
+                "fee_usd": {
+                  "type": "number"
+                },
+                "busy_level": {
+                  "type": "string",
+                  "enum": [
+                    "low",
+                    "moderate",
+                    "high"
+                  ]
+                },
+                "tip_hint": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "chain",
+                "fee_native",
+                "fee_usd",
+                "busy_level",
+                "tip_hint"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "chain",
+          "fee_native",
+          "fee_usd",
+          "busy_level",
+          "tip_hint",
+          "evaluated_at"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": false,
+  "entrypoints": {
+    "recommendRoute": {
+      "description": "Analyse gas costs across the provided chains and return the cheapest route with timing guidance.",
+      "streaming": false,
+      "input_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "chain_set": {
+            "description": "Candidate chains to evaluate.",
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ethereum",
+                "base",
+                "arbitrum",
+                "bsc"
+              ]
+            }
+          },
+          "calldata_size_bytes": {
+            "description": "Calldata size in bytes expected for the transaction.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "gas_units_est": {
+            "description": "Base gas estimate (without calldata) for the transaction.",
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "chain_set",
+          "calldata_size_bytes",
+          "gas_units_est"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "chain": {
+            "type": "string",
+            "enum": [
+              "ethereum",
+              "base",
+              "arbitrum",
+              "bsc"
+            ]
+          },
+          "fee_native": {
+            "type": "number"
+          },
+          "fee_usd": {
+            "type": "number"
+          },
+          "busy_level": {
+            "type": "string",
+            "enum": [
+              "low",
+              "moderate",
+              "high"
+            ]
+          },
+          "tip_hint": {
+            "type": "string"
+          },
+          "evaluated_at": {
+            "type": "number"
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "chain": {
+                  "type": "string",
+                  "enum": [
+                    "ethereum",
+                    "base",
+                    "arbitrum",
+                    "bsc"
+                  ]
+                },
+                "fee_native": {
+                  "type": "number"
+                },
+                "fee_usd": {
+                  "type": "number"
+                },
+                "busy_level": {
+                  "type": "string",
+                  "enum": [
+                    "low",
+                    "moderate",
+                    "high"
+                  ]
+                },
+                "tip_hint": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "chain",
+                "fee_native",
+                "fee_usd",
+                "busy_level",
+                "tip_hint"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "chain",
+          "fee_native",
+          "fee_usd",
+          "busy_level",
+          "tip_hint",
+          "evaluated_at"
+        ],
+        "additionalProperties": false
+      },
+      "pricing": {
+        "invoke": "0.02 USDC"
+      }
+    }
+  },
+  "payments": [
+    {
+      "method": "x402",
+      "payee": "0x892e4FeeD0128f11D486FD451AfF4A78171C8748",
+      "network": "base",
+      "endpoint": "https://facilitator.daydreams.systems",
+      "priceModel": {
+        "default": "0.02"
+      },
+      "extensions": {
+        "x402": {
+          "facilitatorUrl": "https://facilitator.daydreams.systems"
+        }
+      }
+    }
+  ]
+}

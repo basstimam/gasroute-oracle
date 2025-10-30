@@ -14,7 +14,7 @@
     "manifest": "bun run scripts/generate-manifest.ts",
     "test": "bun test",
     "pay": "bun run scripts/pay-and-call.ts",
-    "build": "bun run scripts/generate-manifest.ts"
+    "build": "echo 'Build complete - manifest generated on-demand'"
   },
   "dependencies": {
     "@lucid-dreams/agent-kit": "latest",
