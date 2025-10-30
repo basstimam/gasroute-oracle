@@ -7,9 +7,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "types": ["bun-types"],
-    "outDir": "./dist",
-    "declaration": true
+    "types": ["bun-types"]
   },
-  "include": ["src", "api"]
+  "include": ["src", "api", "scripts"]
 }

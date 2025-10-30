@@ -14,8 +14,7 @@
     "manifest": "bun run scripts/generate-manifest.ts",
     "test": "bun test",
     "pay": "bun run scripts/pay-and-call.ts",
-    "build": "tsc && bun run scripts/generate-manifest.ts",
-    "vercel-build": "tsc && bun run scripts/generate-manifest.ts"
+    "build": "bun run scripts/generate-manifest.ts"
   },
   "dependencies": {
     "@lucid-dreams/agent-kit": "latest",
