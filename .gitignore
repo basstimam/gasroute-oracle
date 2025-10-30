@@ -52,3 +52,4 @@ coverage/
 *.tar.gz
 *.tmp
 
+.vercel

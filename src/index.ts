@@ -1,4 +1,10 @@
+import { Hono } from "hono";
 import { app, payments } from "./agent";
+
+// Hint for build systems (and Vercel framework detection).
+if (process.env.__VERCEL_FRAMEWORK_DETECTION_ONLY__ === "1") {
+  void new Hono();
+}
 
 const port = Number(process.env.PORT ?? 8787);
 

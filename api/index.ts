@@ -1,5 +1,8 @@
+import { Hono } from "hono";
 import { app } from "../src/agent";
 
-export default {
-  fetch: app.fetch,
-};
+const honoApp = new Hono();
+
+honoApp.all("*", (c) => app.fetch(c.req.raw));
+
+export default honoApp;
