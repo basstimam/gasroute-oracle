@@ -164,7 +164,7 @@ async function fetchBscGasQuote(): Promise<GasQuote> {
       const response = await fetch(url, {
         headers: {
           "Content-Type": "application/json",
-          "User-Agent": "gasroute-oracle/0.2",
+          "User-Agent": "gasroute-oracle/0.0.1",
         },
       });
 
