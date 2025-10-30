@@ -2,6 +2,11 @@
   "framework": "hono",
   "installCommand": "bun install",
   "buildCommand": "bun run manifest",
+  "functions": {
+    "api/**": {
+      "runtime": "vercel-bun@latest"
+    }
+  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/index" }
   ]

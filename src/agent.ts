@@ -29,7 +29,7 @@ const configOverrides: AgentKitConfig = {
 
 const agentMeta: AgentMeta = {
   name: "GasRoute Oracle",
-  version: "0.2.0",
+  version: "0.0.1",
   description:
     "Recommends the cheapest EVM chain and timing hints for contract calls across Ethereum, Base, Arbitrum, and BSC.",
 };
