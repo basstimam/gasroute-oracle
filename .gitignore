@@ -1,0 +1,54 @@
+# Dependencies / package managers
+node_modules/
+bun.lockb
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+*.log
+logs/
+
+# Build output
+/dist/
+/build/
+/.vercel/
+.docusaurus/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Runtime caches
+.cache/
+.next/
+.nuxt/
+.svelte-kit/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# Tests / coverage
+coverage/
+*.lcov
+.jest/
+.playwright/
+
+# Generated agent metadata
+/.well-known/agent.json
+
+# Misc
+*.tgz
+*.zip
+*.tar.gz
+*.tmp
+
