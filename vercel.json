@@ -1,5 +1,0 @@
-{
-  "framework": "hono",
-  "installCommand": "bun install",
-  "buildCommand": "bun run manifest"
-}
