@@ -1,0 +1,2 @@
+# This folder is required by Vercel
+# All routes are handled by api/index.ts serverless function
