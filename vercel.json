@@ -1,8 +1,5 @@
 {
   "framework": "hono",
   "installCommand": "bun install",
-  "buildCommand": "bun run manifest",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/api/index" }
-  ]
+  "buildCommand": "bun run manifest"
 }
