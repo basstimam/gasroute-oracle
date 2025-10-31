@@ -36,6 +36,7 @@ const agentMeta: AgentMeta = {
 
 const { app, addEntrypoint, payments } = createAgentApp(agentMeta, {
   config: configOverrides,
+  useConfigPayments: true
 });
 
 const recommendRouteEntrypoint: EntrypointDef = {
