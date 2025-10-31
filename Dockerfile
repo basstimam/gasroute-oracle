@@ -13,6 +13,8 @@ COPY . .
 # Generate manifest ahead of time
 RUN bun run manifest
 
-EXPOSE 8787
+EXPOSE 8080
+
+ENV PORT=8080
 
 CMD ["bun", "run", "start"]
